@@ -50,8 +50,8 @@ exports.register =async (req,res)=>{
 
 exports.login =async (req,res)=>{
   console.log("inside login fn");
-  const {email,password,confirmPassword} = req.body
-  try{ const existUser = await users.findOne({email,password,confirmPassword})
+  const {email,password} = req.body
+  try{ const existUser = await users.findOne({email,password})
   
   if(existUser){
     const token = jwt.sign({userId:existUser._id},"secretKey1234")  //sending as object beacause we are sending more than one data
