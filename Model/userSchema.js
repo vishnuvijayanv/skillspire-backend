@@ -7,10 +7,7 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    lastName:{
-        type:String,
-        required:true
-    },
+    
     email:{
         type:String,
         required:true
@@ -59,10 +56,14 @@ const userSchema = new mongoose.Schema({
         type:String
     },
     phone:{
-        type:String
+        type:Number
     },
     termsnconditions:{
         type:String
+    },
+    updated:{
+        type: Boolean,
+        default: false
     }
 
 

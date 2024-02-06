@@ -68,6 +68,10 @@ router.get('/applications/request',jwtMiddleware,applyController.getUserRequest)
 //status update 
 router.put('/jobs/jobstatusupdate/:id',jwtMiddleware,applyController.statusUpdate)
 
+//emplyer details
+
+router.get('/employer/details/:id',jwtMiddleware,userController.empData)
+
 //export router 
 
 module.exports = router

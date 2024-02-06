@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 
 exports.register =async (req,res)=>{
     console.log("inside register fn");
-    const {firstName , lastName ,email,password,confirmPassword,uType} = req.body
+    const {firstName , email,password,confirmPassword,uType} = req.body
     try{ const existUser = await users.findOne({email})
     
     if(existUser){
@@ -15,7 +15,7 @@ exports.register =async (req,res)=>{
           //1)create a object for the modal
           const newUser = new users({
             firstName,
-            lastName,
+            
             email,
             password,
             confirmPassword,
@@ -108,6 +108,20 @@ exports.empUpdate = async(req,res)=>{
     res.status(200).json(empUpdate)
 
 }catch(err){
+    res.status(401).json(err)
+}
+
+}
+
+exports.empData=async(req,res)=>{
+  const {id} = req.params
+  try{
+    const employer = await users.findOne({_id:id})
+    res.status(200).json(employer)
+  
+
+  }
+  catch(err){
     res.status(401).json(err)
 }
 

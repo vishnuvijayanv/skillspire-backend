@@ -6,7 +6,7 @@ exports.appliedJobs=async(req,res)=>{
     const {userID,jobID,name,email,skills,jobTitle,category,rates,profile,jobDesc,status,time} = req.body
     console.log(req.body);
     try{
-        const exists = await applies.findOne({userID,jobID,name,email,skills,jobTitle,category,rates,profile,jobDesc,status,time})
+        const exists = await applies.findOne({userID,jobID})
         if (exists) {
             res.status(406).json("Already Applied")
 
